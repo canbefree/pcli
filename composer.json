@@ -4,7 +4,10 @@
     },
     "autoload": {
         "psr-4": {
-            "command\\":"Command"
+            "App\\":"."
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
     }
 }
