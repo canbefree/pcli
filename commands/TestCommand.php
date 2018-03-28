@@ -20,4 +20,5 @@ class TestCommand extends Command {
         echo $input->getArgument('a'),PHP_EOL;
         echo $input->getArgument('b'),PHP_EOL;
     }
+
 }
