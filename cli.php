@@ -1,7 +1,5 @@
 <?php
-
 require __DIR__.'/vendor/autoload.php';
-
 use Symfony\Component\Console\Application;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
@@ -9,6 +7,14 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+
+
+
+define("APP_PATH",'.');
+define("COMMAND_PATH",APP_PATH."/commands/");
+define("CONFIG_PATH",APP_PATH."/config/");
+
+
 
 //研究下事件怎么用的
 //$dispatcher = new EventDispatcher();
@@ -28,23 +34,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 //$dispatcher->dispatch('test.foo',$event);
 
-//$application = new Application();
-//
-//
-//// ... register commands
-//$testCommand  =new  \App\Commands\TestCommand();
-//
-//$application->add($testCommand);
-//
-//$application->run();
+$application = new Application();
 
-(new Application('commands', '1.0.0'))
-  ->register('commands')
-      ->addArgument('foo', InputArgument::OPTIONAL, 'The directory')
-      ->addOption('bar', null, InputOption::VALUE_REQUIRED)
-      ->setCode(function(InputInterface $input, OutputInterface $output) {
-          // output arguments and options
-      })
-  ->getApplication()
-  ->setDefaultCommand('commands', true) // Single command application
-  ->run();
+$commands = \App\System\Loader::getConfig("command");
+foreach ($commands as $command){
+    $application->add(new $command());
+}
+
+$application->run();

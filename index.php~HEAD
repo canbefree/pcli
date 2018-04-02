@@ -1,0 +1,43 @@
+<?php
+//引入依赖包
+require __DIR__.'/vendor/autoload.php';
+
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\HttpKernel;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
+use System\ControllerResolver;
+
+
+// create the Request object
+$request = Request::createFromGlobals();
+
+$request->attributes->set("_controller",'App\Controllers\DemoController::index');
+
+//$request = Request::create('http://example.com/foo?_path=foo%3Dbar%26_controller%3Dfoo');
+$dispatcher = new EventDispatcher();
+// ... add some event listeners
+
+$dispatcher->addListener(\Symfony\Component\HttpKernel\KernelEvents::TERMINATE,function(){
+    die("dsaf");
+});
+
+
+// create your controller and argument resolvers
+$controllerResolver = new ControllerResolver();
+
+$argumentResolver = new ArgumentResolver();
+
+// instantiate the kernel
+$kernel = new HttpKernel($dispatcher, $controllerResolver, new RequestStack(), $argumentResolver);
+// actually execute the kernel, which turns the request into a response
+// by dispatching events, calling a controller, and returning the response
+$response = $kernel->handle($request);
+
+// send the headers and echo the content
+$response->send();
+
+// trigger the kernel.terminate event
+$kernel->terminate($request, $response);
