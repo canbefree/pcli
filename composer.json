@@ -1,7 +1,9 @@
 {
     "require": {
         "symfony/console": "^3.3",
-        "symfony/event-dispatcher": "^4.0"
+        "symfony/event-dispatcher": "^4.0",
+        "doctrine/orm": "^2.6",
+        "doctrine/doctrine-bundle": "^1.8"
     },
     "autoload": {
         "psr-4": {

@@ -13,12 +13,13 @@ class Http{
         $ch = curl_init();
 
         // 设置URL和相应的选项
-        curl_setopt($ch, CURLOPT_URL, "http://www.runoob.com/");
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        //curl_setopt($ch,　CURLOPT_RETURNTRANSFER,　1);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         // 抓取URL并把它传递给浏览器
         $data = curl_exec($ch);
+
         if(empty($data)){
             return false;
         }

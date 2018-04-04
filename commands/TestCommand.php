@@ -9,17 +9,13 @@ use Symfony\Component\Console\Input\InputArgument;
 class TestCommand extends Command {
     protected function configure(){
         // ..
-        $this->setName("test")
-            ->setDescription("test help")
-            ->addArgument('a',InputArgument::REQUIRED,'this is argrument about a')
-            ->addArgument('b',InputArgument::REQUIRED,'this is argrument about b');
+        $this->setName("run:test")
+            ->setDescription("phpunit test");
     }
 
     protected function execute(InputInterface $input, OutputInterface $output){
         // ..
-        echo "test";
-        echo $input->getArgument('a'),PHP_EOL;
-        echo $input->getArgument('b'),PHP_EOL;
+        require_once("./vendor/bin/phpunit");
     }
 
 }
