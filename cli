@@ -1,19 +1,19 @@
+#!/usr/bin/env php
 <?php
-require __DIR__.'/vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
+define("PATH_COMMAND",dirname(__FILE__));
+
 use Symfony\Component\Console\Application;
 use Symfony\Component\EventDispatcher\EventDispatcher;
-
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
-
-define("APP_PATH",'.');
-define("COMMAND_PATH",APP_PATH."/commands/");
-define("CONFIG_PATH",APP_PATH."/config/");
-
+define("APP_PATH", '.');
+define("COMMAND_PATH", APP_PATH . "/commands/");
+define("CONFIG_PATH", APP_PATH . "/config/");
 
 
 //研究下事件怎么用的
@@ -37,7 +37,7 @@ define("CONFIG_PATH",APP_PATH."/config/");
 $application = new Application();
 
 $commands = \App\System\Loader::getConfig("command");
-foreach ($commands as $command){
+foreach ($commands as $command) {
     $application->add(new $command());
 }
 

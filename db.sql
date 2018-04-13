@@ -1,0 +1,4 @@
+CREATE table t_user (
+  id  INT(10) AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(20)
+)
