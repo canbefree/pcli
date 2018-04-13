@@ -1,6 +1,18 @@
 <?php
-namespace App\Entity;
+// src/Product.php
 
-class Product{
+use Doctrine\ORM\Annotation as ORM;
 
+/**
+ * @ORM\Entity @ORM\Table(name="products")
+ **/
+class Product
+{
+    /** @ORM\Id @ORM\Column(type="integer") @ORM\GeneratedValue **/
+    private $id;
+
+    /** @ORM\Column(type="string") **/
+    private $name;
+
+    // .. (other code)
 }
