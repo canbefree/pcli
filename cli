@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/bootstrap.php';
+
 define("PATH_COMMAND",dirname(__FILE__));
 
 use Symfony\Component\Console\Application;

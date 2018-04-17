@@ -15,11 +15,12 @@ class ProductSqlCommand extends Command {
     }
 
     protected function execute(InputInterface $input, OutputInterface $output){
-        $this->getDoctrine();
+        $orm = \getDoctrine();
         // ..
         $type = $input->getArgument("type");
         switch($type){
         case "c":
+            var_dump($orm);
             break;
         case "d":
             break;
