@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Commands;
+namespace App\Commands\UnitTest;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 
-class TestCommand extends Command
+class RunCommand extends Command
 {
     protected function configure()
     {
         // ..
-        $this->setName("run:test")
+        $this->setName("unit:run")
             ->setDescription("phpunit test");
     }
 

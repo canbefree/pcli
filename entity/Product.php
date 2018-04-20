@@ -1,18 +1,32 @@
 <?php
-// src/Product.php
 
-use Doctrine\ORM\Annotation as ORM;
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity @ORM\Table(name="products")
- **/
+ * Product
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="product")
+ */
 class Product
 {
-    /** @ORM\Id @ORM\Column(type="integer") @ORM\GeneratedValue **/
+    /** @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
     private $id;
 
-    /** @ORM\Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $name;
 
     // .. (other code)
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 }

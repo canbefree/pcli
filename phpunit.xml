@@ -4,5 +4,10 @@
             <directory>tests</directory>
         </testsuite>
     </testsuites>
+    <php>
+        <var name="MYSQL_HOST" value="mariadb"/>
+        <var name="MYSQL_USER" value="root"/>
+        <var name="MYSQL_PWD" value="123456"/>
+        <var name="MYSQL_DB" value="pcli_test"/>
+    </php>
 </phpunit>
-

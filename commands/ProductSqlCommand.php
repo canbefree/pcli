@@ -1,6 +1,7 @@
 <?php
 namespace App\Commands;
 
+use App\Entity\Product;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -10,23 +11,18 @@ class ProductSqlCommand extends Command {
     protected function configure(){
         // ..
         $this->setName("sql:product")
-            ->setDescription("nothing")
-            ->addArgument('type',InputArgument::REQUIRED,'c create table product  d delete table product');
+            ->setDescription("nothing");
+//            ->addArgument('type',InputArgument::REQUIRED,'c create table product  d delete table product');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output){
-        $orm = \getDoctrine();
-        // ..
-        $type = $input->getArgument("type");
-        switch($type){
-        case "c":
-            var_dump($orm);
-            break;
-        case "d":
-            break;
-        default:
-            break;
-        }
+        $db = app('db');
+        $product = new Product();
+        $product->setName('hello');
+        $entityManager = $db->manager;
+        $entityManager->persist($product);
+        $entityManager->flush();
+
     }
 
 }

@@ -1,0 +1,7 @@
+product:
+  -
+    id: 1
+    name: "hello,12321"
+
+  - id: 2
+    name: "neo"
