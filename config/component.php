@@ -2,6 +2,6 @@
 
 return [
     'db'=>[
-        'class' => \App\System\DoctrineTest::class,
+        'class' => \App\System\Doctrine::class,
     ]
 ];

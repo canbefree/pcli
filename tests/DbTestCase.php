@@ -15,7 +15,7 @@ abstract class DbTestCase extends TestCase
     public function getConnection()
     {
         if(null === $this->conn){
-            $db = app("db", ['dbname' =>'pcli_test']);
+            $db = app("db", ['dbname' =>$GLOBALS['MYSQL_TEST_DB']]);
             $conn = $db->manager->getConnection()->getParams();
             $Link = new \PDO("mysql:host={$conn['host']};dbname={$conn['dbname']}", $conn['user'],
                 $conn['password']);

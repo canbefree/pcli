@@ -16,12 +16,12 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 
 class Doctrine extends Component
 {
-    private $manager;
+    protected $manager;
 
-    private $host = null;
-    private $user = null;
-    private $password = null;
-    private $dbname = null;
+    protected $host = null;
+    protected $user = null;
+    protected $password = null;
+    protected $dbname = null;
 
     public function init()
     {
@@ -35,6 +35,7 @@ class Doctrine extends Component
         AnnotationRegistry::registerLoader('class_exists');
 
         $config->setMetadataDriverImpl($driver);
+
         $conn = array(
             'driver' => 'pdo_mysql',
             'host' => $this->host?: env('MYSQL_HOST'),
@@ -42,6 +43,7 @@ class Doctrine extends Component
             'password' => $this->password?:env('MYSQL_PWD'),
             'dbname' => $this->dbname?:env('MYSQL_DB'),
         );
+
         $this->manager = EntityManager::create($conn, $config);
     }
 

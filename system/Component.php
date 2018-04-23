@@ -32,7 +32,7 @@ abstract class Component{
 
     public function __set($name, $value)
     {
-        $this->name = $value;
+        $this->$name = $value;
     }
 
 }

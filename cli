@@ -12,23 +12,25 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
-//研究下事件怎么用的
+////研究下事件怎么用的
 //$dispatcher = new EventDispatcher();
-
+//
 //$dispatcher->addListener('acme.foo.action', [new App\Listeners\TestListener(),'onFoo']);
-
+//
 //$event = new App\Events\TestEvent();
-
+//
 //$dispatcher->dispatch('acme.foo.action',$event);
-
-
-//研究下 事件订阅者
+//
+//
+////研究下 事件订阅者
 //
 //$subscriber = new \App\Events\TestSubscriber();
-
+//
 //$dispatcher->addSubscriber($subscriber);
-
+//
 //$dispatcher->dispatch('test.foo',$event);
+//
+//exit;
 
 $application = new Application();
 

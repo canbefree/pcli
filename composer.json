@@ -4,7 +4,9 @@
         "symfony/event-dispatcher": "^4.0",
         "doctrine/orm": "^2.6",
         "doctrine/doctrine-bundle": "^1.8",
-        "phpunit/dbunit": "3.0.3"
+        "phpunit/dbunit": "3.0.3",
+        "mockery/mockery": "^1.0",
+        "fzaninotto/faker": "^1.7"
     },
     "autoload": {
         "psr-4": {

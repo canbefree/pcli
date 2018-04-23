@@ -20,13 +20,7 @@ class ProductTest extends \App\Tests\DbTestCase {
     }
 
     public function test_db_connect(){
-        $db = app('db');
-        $product = new Product();
-        $product->setName('hello');
-
-        $entityManager = $db->manager;
-        $id = $entityManager->find(Product::class,2);
-        $this->assertEquals(2,$this->getConnection()->getRowCount());
+        $this->assertEquals(2,$this->getConnection()->getRowCount('product'));
     }
 
     public function test_create_table(){
