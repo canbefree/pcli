@@ -6,9 +6,9 @@ use Faker\Factory;
 use PHPUnit\Framework\TestCase;
 
 class FakeTest extends TestCase{
-    public function testPhone(){
+    public function testPhone()
+    {
         $faker = Factory::create('zh_CN');
-        echo $faker->phoneNumber;
-        exit;
+        $this->assertRegExp('/^[0-9]{11}$/', $faker->phoneNumber);
     }
 }

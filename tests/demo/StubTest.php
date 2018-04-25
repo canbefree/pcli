@@ -38,4 +38,22 @@ class StubTest extends \PHPUnit\Framework\TestCase
         $event = new TestEvent();
         $dispatcher->dispatch('acme.foo.action', $event);
     }
+
+    /**
+     * 仿件对象
+     */
+    public function test_mockery()
+    {
+        $observer = \Mockery::mock(TestListener::class);
+        $observer->shouldReceive('onFoo')->once()->andReturn('nothing');
+
+        $dispatcher = new EventDispatcher();
+        $dispatcher->addListener('acme.foo.action', [$observer, 'onFoo']);
+
+        $event = new TestEvent();
+        $dispatcher->dispatch('acme.foo.action', $event);
+
+        \Mockery::close();
+    }
+
 }

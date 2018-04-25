@@ -19,7 +19,14 @@ class ProductTest extends \App\Tests\DbTestCase {
         return new \PHPUnit\DbUnit\DataSet\YamlDataSet(dirname(__FILE__)."/../dataset/product.yml");
     }
 
+
     public function test_db_connect(){
+        //单元测试 独立的方法块。
+
+        // $_COOKIE -->$_session_id---> $_SESSION // 模拟cookie
+
+        islogin(); // session 里面 $session['_id']  $_session_id;
+
         $this->assertEquals(2,$this->getConnection()->getRowCount('product'));
     }
 
